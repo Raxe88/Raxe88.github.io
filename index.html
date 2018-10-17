@@ -1,0 +1,33 @@
+<html>
+  <body onload="codeAddress();">
+      <button type="button" onclick="addPress()">Press!</button>
+      <p>You have <a id="numPresses">0</a> presses </p>
+      <table id="elements">
+        <tr>
+          <th>Name</th>
+          <th>Function</th>
+          <th>Cost</th>
+          <th>Owned</th>
+          <th>Buy</th>
+        </tr>
+        <tr id="autopresser">
+          <td>AutoPresser</td>
+          <td>Makes a press every 2 seconds</td>
+          <td>50 p</td>
+          <td>0</td>
+          <td><button type="button" onclick="buy('autopresser')">Buy</button></td>
+        </tr>
+        <tr id="presserlonger">
+          <td>PresserLonger</td>
+          <td>Your presses are multipled by 2 for each PresserLonger</td>
+          <td>25 p</td>
+          <td>0</td>
+          <td>
+            <button type="button" onclick="buy('presserlonger')">Buy</button>
+          </td>
+        </tr>
+    </table>
+  </body>
+
+  <script type="text/javascript" src="main.js"></script>
+</html>
