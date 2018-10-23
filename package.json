@@ -1,0 +1,24 @@
+{
+  "name": "raxe88.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raxe88/Raxe88.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raxe88/Raxe88.github.io/issues"
+  },
+  "homepage": "https://github.com/Raxe88/Raxe88.github.io#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-html": "^1.0.1",
+    "expressjs": "^1.0.1"
+  }
+}
