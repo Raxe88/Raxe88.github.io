@@ -15,7 +15,7 @@ window.onload = function() {
   initApp();
 };
 function handleKeyCode(kc) {
-  if (kc==VK_RED) {
+  if (kc==VK_RED && kc == VK_ENTER) {
     document.location.href = './menu.html';
     return true;
   }
