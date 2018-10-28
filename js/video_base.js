@@ -5,21 +5,25 @@ function initVideo() {
   try {
     document.getElementById('video').bindToCurrentChannel();
   } catch (e) {
+    console.log(e.message);
     // ignore
   }
   try {
     document.getElementById('video').setFullScreen(false);
   } catch (e) {
+    console.log(e.message);
     // ignore
   }
 }
 
 function initApp() {
+  console.log("Init app videoplayer");
   try {
     var app = document.getElementById('appmgr').getOwnerApplication(document);
     app.show();
-    app.activate();
+    //app.activate();
   } catch (e) {
+    console.log(e.message);
     // ignore
   }
   setKeyset(0x1+0x2+0x4+0x8+0x10);
@@ -57,22 +61,33 @@ function registerKeyEventListener() {
   }, false);
 }
 
+/**
+ * Inicialitza el menú guardant a la variable 'opts' els elements de la taula 
+ * d'accions del menú i selecciona el primer
+ */
 function menuInit() {
   opts = document.getElementById('menu').getElementsByTagName('li');
   menuSelect(0);
 }
 
+/**
+ * Mètode que canvia visualment l'opció per la seleccionada canviant un
+ * nom de classe d'un atribut HTML anomenat 'lisel' que pinta després el CSS
+ * @param {Opció} selected Indica la posició a la que es vol moure
+ */
 function menuSelect(i) {
+
+  //Evita que es passi el límit d'opcions disponibles a seleccionar fent esquerra i dreta
   if (i<=0) {
     i = 0;
   } else if (i>=opts.length) {
     i = opts.length-1;
   }
+  
   selected = i;
-  var scroll = Math.max(0, Math.min(opts.length-13, selected-6));
+  
+  //Esborra i actualitza el tag 'lisel' pel CSS
   for (i=0; i<opts.length; i++) {
-    //opts[i].style.display = (i>=scroll && i<scroll+13) ? 'block' : 'none';
-	//opts[i].style.display = (i>=scroll && i<scroll+13) ? 'inline-block' : 'none';
     opts[i].className = selected==i ? 'lisel' : '';
   }
 }

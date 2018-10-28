@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>LG HbbTV </title>
+<title>RG Player HbbTV </title>
 <meta http-equiv="content-type" content="Content-Type: application/vnd.hbbtv.xhtml+xml; charset=UTF-8" />
 <script type="text/javascript" src="js/keycodes.js"></script>
 <script type="text/javascript" src="js/video_base.js"></script>
@@ -45,8 +45,15 @@ ul.menu {
   position: absolute;
   width: 500px;
 }
+
+ul{
+  opacity: 0.5;
+  background-color: #002048;
+}
+
 .menu li {
   display: none;
+  opacity: 1;
   overflow: hidden;
   width: 500px;
   height: 34px;
@@ -60,8 +67,9 @@ ul.menu {
   background-color: #3073b8;
 }
 .menu .lisel {
+  opacity: 1;
   color: #002048;
-  background-color: #89c3ff;
+  background-color: #f44242;
 }
 
 div.statok {
@@ -80,14 +88,16 @@ var isVisible = true;
 
 // TODO : Insert your media file at each switch-case.
 function getVideoUrlByIndex(i) {
-  return "https://www.youtube.com/watch?v=LsBrT6vbQa8";
+  //return "https://www.youtube.com/watch?v=LsBrT6vbQa8";
+
+  //Passa de caràcter a enter
   i *= 1;
   switch (i) {
     case 0: // header
     case 1:
-      return "http://www.videourl.com/mime.ts";
+      return "http://techslides.com/demos/sample-videos/small.webm";
     case 2:
-      return "http://mediaurl2";
+      return "https://www.w3schools.com/html/mov_bbb.ogg";
     case 3: //header 720
     case 4:
         return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/CENC/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)";
@@ -101,16 +111,30 @@ function getVideoUrlByIndex(i) {
 }
 
 function getParameterByName(name) {
+  console.log("Name: " + name);
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
+  console.log("Name filtered: " + name);
+
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+  var results = regex.exec(location.search);
+
+  console.log("Results: " + results);
+  console.log(results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")));
   return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 window.onload = function() {
+  //Inicialitza el menú de baix amb els botons i selecciona la primera opció
+  //video_base.js
   menuInit();
+
+  //
   registerKeyEventListener();
+
+  //
   initApp();
+
+  //
   for (var i=0; i<keynames.length; i++) {
     keycodes[i] = -1;
     try {
@@ -247,7 +271,8 @@ function playVideo(mtype, murl, registerlistener) {
     videlem.data = murl;
     videlem.play(1);
   } catch (e) {
-    showStatus(false, 'Setting the video object '+mtype+' failed.');
+    console.log(true, 'Setting the video object '+mtype+' failed.');
+    //showStatus(false, 'Setting the video object '+mtype+' failed.');
   }
 
 }
