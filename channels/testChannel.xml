@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ChannelConfig>
+    <ChannelList>
+        <Channel ccid="ccid:1" channelType="0" idType="12">
+            <ONID>8442</ONID>
+            <TSID>5</TSID>
+            <SID>1281</SID>
+            <Name>Test Channel</Name>
+            <Stream>https://www.radiantmediaplayer.com/media/bbb-360p.mp4</Stream>
+        </Channel>
+        <Channel ccid="ccid:2" channelType="0" idType="12">
+            <ONID>8442</ONID>
+            <TSID>5</TSID>
+            <SID>1281</SID>
+            <Name>Test Channel 2</Name>
+            <Stream>https://www.w3schools.com/html/mov_bbb.ogg</Stream>
+        </Channel>
+    </ChannelList>
+</ChannelConfig>
