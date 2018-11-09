@@ -20,6 +20,11 @@ function handleKeyCode(kc) {
         //document.location.href = './menu.html';
         return true;
     }
+    if(kc==VK_LEFT){
+        document.getElementById("firetv-background-tv").style.cssText = "";
+        document.getElementById("firetv-background-tv").childNodes[0].style.cssText = "";
+        document.getElementById("firetv-background-tv").childNodes[0].className = "ResizeTranslate";
+    }
     return false;
 };
 
