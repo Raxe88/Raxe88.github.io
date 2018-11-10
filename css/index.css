@@ -113,15 +113,55 @@ body {
     100%  {opacity: 1}
 }
 
-.test{
-    position: absolute;
-    top: 0px;
-    left: 100px;
-    width: 100%;
-    height: 100%;
-    min-width: 1px;
-    min-height: 1px;
-    transform-origin: 50% 50% 0px;
+.RedApp{
+    position: absolute !important;
+    top: 100px !important;
+    left: 750px !important;
+    width: 30% !important;
+    height: 30% !important;
+    min-width: 1px !important;
+    min-height: 1px !important;
+    visibility: unset !important;
+}
+
+.RedAppFadeIn{
+    animation-name: RedAppFadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes RedAppFadeIn {
+    from{
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    to{
+        top: 100px;
+        left: 750px;
+        width: 30%;
+        height: 30%;
+    }
+}
+
+.RedAppFadeOut{
+    animation-name: RedAppFadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes RedAppFadeOut {
+    from{
+        top: 100px;
+        left: 750px;
+        width: 30%;
+        height: 30%;
+    }
+    to{
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .ResizeTranslate{
@@ -133,13 +173,12 @@ body {
     from{
         width: 100%;
         height: 100%;
+        left: 00px;
     }
     to{
         width: 50%;
         height: 50%;
-        position: absolute;
         left: 200px;
-        visibility: unset !important;
     }
 }
 
