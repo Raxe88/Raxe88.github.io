@@ -15,7 +15,7 @@
     <object id="appmgr" type="application/oipfApplicationManager" style=""></object>
     <object id="oipfcfg" type="application/oipfConfiguration"></object>
     <div id = "redButtonApp" class = "notShown">
-      <img src = "resources/app.png" class = "backgroundRedButtonApp">
+      <img id = "backgroundImage" src = "resources/app.png" class = "backgroundRedButtonApp">
       <img id = "selectionbar" src = "resources/selectionbar.png" style = "position: absolute; left: 75px; top:40px">
       <img id = "selectionbarUpArrow" src = "resources/uparrow.png" class = "notShown" style = "position: absolute; left: 770px; top: 36px">
       <img id = "selectionbarDownArrow" src = "resources/downarrow.png" style = "position: absolute; left: 770px; top: 108px">
@@ -61,6 +61,11 @@
         </ul>
       </div>
     </div>
+    <div id = "newvideo"></div>
+    <div id = "pressBlueButtonMessage" class = "notShown">
+        Press <div class = "blueButtonImg"></div> to exit fullscreen
+        <div class = "redButtonUnderline">a</div>
+      </div>
     <div id = "pressRedButtonMessage" class = "notShown">
       Press <div class = "redButtonImg"></div> to start application
       <div class = "redButtonUnderline">a</div>

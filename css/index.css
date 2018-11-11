@@ -32,6 +32,16 @@ body {
     box-shadow: 1px 6px 2px grey;
 }
 
+#pressBlueButtonMessage{
+    left: 70px; 
+    top: 40px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    font-family: 'Roboto', sans-serif;
+    position:absolute;
+    box-shadow: 1px 6px 2px grey;
+}
+
 .redButtonUnderline{
     background-color: #77cbb9;
     color: rgba(0,0,0,0);
@@ -45,6 +55,15 @@ body {
     width: 30px;
     height: 10px;
     background-color: red;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.blueButtonImg{
+    display: inline-block;
+    width: 30px;
+    height: 10px;
+    background-color: blue;
     border-style: solid;
     border-width: 1px;
 }
@@ -101,6 +120,13 @@ li{
     color: black;
 }
 
+.videoSmall{
+   position: absolute;
+   width:380px;
+   height:210px;
+   top:42px;
+   left:820px;
+}
 
 .videoNotSelected{
     color: white;
@@ -190,35 +216,54 @@ li{
     }
 }
 
-.ResizeTranslate{
-    animation-name: ResizeTranslate;
+.FullscreenVideo{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    left: 0px;
+    top: 0px;
+}
+
+.FullscreenVideoIn{
+    animation-name: FullscreenVideoIn;
     animation-duration: 1s;
 }
 
-@keyframes ResizeTranslate {
+@keyframes FullscreenVideoIn {
     from{
-        width: 100%;
-        height: 100%;
-        left: 00px;
+        position: absolute;
+        width:380px;
+        height:210px;
+        top:42px;
+        left:820px;
     }
     to{
-        width: 50%;
-        height: 50%;
-        left: 200px;
+        position: absolute;
+        width: 1280px;
+        height: 720px;
+        left: 0px;
+        top: 0px;
     }
 }
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes example {
-    from {background-color: red;}
-    to {background-color: yellow;}
+.FullscreenVideoOut{
+    animation-name: FullscreenVideoOut;
+    animation-duration: 1s;
 }
 
-/* Standard syntax */
-@keyframes example {
-    0%   {background-color:purple; left:0px; top:0px;}
-    25%  {background-color:cyan; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:cyan; left:0px; top:200px;}
-    100% {background-color:purple; left:0px; top:0px;}
+@keyframes FullscreenVideoOut {
+    from{
+        position: absolute;
+        width: 1280px;
+        height: 720px;
+        left: 0px;
+        top: 0px;
+    }
+    to{
+        position: absolute;
+        width:380px;
+        height:210px;
+        top:42px;
+        left:820px;
+    }
 }
