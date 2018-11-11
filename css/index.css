@@ -76,8 +76,34 @@ body {
     top: 70px;
 }
 
+.backgroundRedButtonApp{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    list-style-type: none;
+    padding: 2px;
+}
+
 .notShown{
     opacity: 0;
+}
+
+.videoSelected{
+    color: black;
+}
+
+
+.videoNotSelected{
+    color: white;
 }
 
 .FadeIn{
@@ -115,8 +141,8 @@ body {
 
 .RedApp{
     position: absolute !important;
-    top: 100px !important;
-    left: 750px !important;
+    top: 39px !important;
+    left: 820px !important;
     width: 30% !important;
     height: 30% !important;
     min-width: 1px !important;
@@ -137,8 +163,8 @@ body {
         height: 100%;
     }
     to{
-        top: 100px;
-        left: 750px;
+        top: 39px;
+        left: 820px;
         width: 30%;
         height: 30%;
     }
@@ -151,8 +177,8 @@ body {
 
 @keyframes RedAppFadeOut {
     from{
-        top: 100px;
-        left: 750px;
+        top: 39px;
+        left: 820px;
         width: 30%;
         height: 30%;
     }
