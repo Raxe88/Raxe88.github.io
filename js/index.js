@@ -134,6 +134,8 @@ function showSync(){
 
 async function showVideo(){
     if(showRedAppStatus == 2 && (!showingVideo || selectedVideo != selectedElement)){
+        gjson.videoList[selectedElement].views++;
+        updateViews();
         selectedVideo = selectedElement;
         showingVideo = true;
         document.getElementById("firetv-background-tv").childNodes[0].muted = true;
@@ -143,9 +145,21 @@ async function showVideo(){
         document.getElementById("newvideo").childNodes[0].addEventListener('ended', onVideoFinish, false);
         
     }
+    //Reanudar video pausat
     if(showRedAppStatus == 2 && showingVideo && document.getElementById("newvideo").childNodes[0].paused){
         document.getElementById("newvideo").childNodes[0].play();
     }
+}
+
+function updateViews(){
+    var k = selectedElement - selectionBarPosition;
+    for(var i = 1; i < 12; i = i + 2){
+        document.getElementById("videos").childNodes[i].childNodes[1].innerHTML = gjson.videoList[k].title;
+        document.getElementById("videos").childNodes[i].childNodes[3].innerHTML = gjson.videoList[k].albumName;
+        document.getElementById("videos").childNodes[i].childNodes[5].innerHTML = gjson.videoList[k].views;
+        k++;
+    }
+    document.getElementById("elementInfo").childNodes[1].childNodes[4].innerHTML = "Views: " + gjson.videoList[selectedElement].views;
 }
 
 function onVideoFinish(e) {
@@ -220,6 +234,7 @@ function initializeData(){
     for(var i = 1; i < 12; i = i + 2){
         document.getElementById("videos").childNodes[i].childNodes[1].innerHTML = gjson.videoList[k].title;
         document.getElementById("videos").childNodes[i].childNodes[3].innerHTML = gjson.videoList[k].albumName;
+        document.getElementById("videos").childNodes[i].childNodes[5].innerHTML = gjson.videoList[k].views;
         k++;
     }
     document.getElementById("elementInfo").childNodes[1].appendChild(document.createElement("li")).appendChild(document.createTextNode(gjson.videoList[0].title));
@@ -232,9 +247,11 @@ function updateSelected(){
     for(var i = 1; i < 12; i = i + 2){
         document.getElementById("videos").childNodes[i].childNodes[1].className = "videoNotSelected";
         document.getElementById("videos").childNodes[i].childNodes[3].className = "videoNotSelected";
+        document.getElementById("videos").childNodes[i].childNodes[5].className = "videoNotSelected";
     }
     document.getElementById("videos").childNodes[selectionBarPosition*2 + 1].childNodes[1].className = "videoSelected";
     document.getElementById("videos").childNodes[selectionBarPosition*2 + 1].childNodes[3].className = "videoSelected";
+    document.getElementById("videos").childNodes[selectionBarPosition*2 + 1].childNodes[5].className = "videoSelected";
 
     document.getElementById("elementInfo").childNodes[1].childNodes[1].remove();
     document.getElementById("elementInfo").childNodes[1].childNodes[1].remove();
