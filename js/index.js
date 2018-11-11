@@ -14,7 +14,7 @@ var gjson;
 var cosa;
 
 window.onload = function() {
-    //Load JSON to global var jsonInfo
+    //Carregar el json
     gjson = loadJSON("resources/data.json");
     initializeData();
     registerKeyEventListener();
@@ -28,15 +28,12 @@ window.onload = function() {
  */
 function handleKeyCode(kc) {
     if(kc== VK_BLUE){
-        //document.getElementById("firetv-background-tv").childNodes[0].muted = true;
         fullscreenVideo();
     }
     if(kc== VK_GREEN){
-        //document.getElementById("firetv-background-tv").childNodes[0].muted = true;
         pauseVideo();
     }
     if(kc== VK_YELLOW){
-        //document.getElementById("firetv-background-tv").childNodes[0].muted = false;
         stopVideo();
     }
     if (kc==VK_RED || kc == VK_ENTER) {
@@ -45,6 +42,7 @@ function handleKeyCode(kc) {
         showVideo();
         return true;
     }
+    //Si es pitja la tecla d'amunt' amb l'aplicació ja iniciada s'inicia el moviment pel menú
     if(kc==VK_UP && showRedAppStatus == 2){
         if(selectionBarPosition == 0 && selectedElement > 0){
             scrollVideosUp();
@@ -61,8 +59,9 @@ function handleKeyCode(kc) {
         }
         showArrows();
         updateSelected();
-        console.log("SelectionBarPos: " + selectionBarPosition + " SelectedElement: " + selectedElement);
+        //console.log("SelectionBarPos: " + selectionBarPosition + " SelectedElement: " + selectedElement);
     }
+    //Si es pitja la tecla d'avall amb l'aplicació ja iniciada s'inicia el moviment pel menú
     if(kc==VK_DOWN && showRedAppStatus == 2){
         if(selectionBarPosition < 5){ //La barra va de 0 a 5 (6 posicions)
             selectionBarPosition++;
@@ -80,9 +79,11 @@ function handleKeyCode(kc) {
         }
         showArrows();
         updateSelected();
-        console.log("SelectionBarPos: " + selectionBarPosition + " SelectedElement: " + selectedElement);
+        //console.log("SelectionBarPos: " + selectionBarPosition + " SelectedElement: " + selectedElement);
     }
+    //Amb la tecla '0' es surt de l'aplicació i es continua veient el broadcast
     if(kc==VK_0){
+        stopVideo();
         hideRedApp();
     }
     return false;
@@ -95,12 +96,17 @@ function setRandomSyncNumber(){
     document.getElementById("randomNumber").innerHTML = randomSyncNumber;
 }
 
+/**
+ * Funció que fa que apareguin les fletxes de moviment en els diferents elements de la llista.
+ */
 function showArrows(){
+    //Si es troba al final, no es mostra la tecla per anar avall
     if(selectedElement < gjson.videoList.length - 1){
         document.getElementById("selectionbarDownArrow").className = "";
     }else{
         document.getElementById("selectionbarDownArrow").className = "notShown";
     }
+    //Si es troba a l'inici, no es mostra la tecla per anar amunt
     if(selectedElement > 0){
         document.getElementById("selectionbarUpArrow").className = "";
     }else{
@@ -132,12 +138,16 @@ function showSync(){
     }
 };
 
+/**
+ * Comença a reproduir el video seleccionat de la llista
+ */
 async function showVideo(){
     if(showRedAppStatus == 2 && (!showingVideo || selectedVideo != selectedElement)){
         gjson.videoList[selectedElement].views++;
         updateViews();
         selectedVideo = selectedElement;
         showingVideo = true;
+        //Animacions de reproducció
         document.getElementById("firetv-background-tv").childNodes[0].muted = true;
         document.getElementById("firetv-background-tv").childNodes[0].className = "FadeOut";
         await sleep(1000);
