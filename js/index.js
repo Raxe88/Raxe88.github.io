@@ -83,11 +83,24 @@ function handleKeyCode(kc) {
     }
     //Amb la tecla '0' es surt de l'aplicació i es continua veient el broadcast
     if(kc==VK_0){
-        stopVideo();
-        hideRedApp();
+        if(isFullscreen){
+            stopVideoFullscreen();
+        }else{
+            hideRedApp();
+        }
+
     }
     return false;
 };
+
+/**
+ * Funció encarregada de tancar l'aplicació en cas que hi hagi un vídeo en pantalla completa
+ */
+async function stopVideoFullscreen(){
+    stopVideo();
+    await sleep(1000);
+    hideRedApp();
+}
 
 /**
  * Funció que genera un nombre aleatori
